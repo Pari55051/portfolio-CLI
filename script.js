@@ -235,3 +235,44 @@ document.addEventListener("DOMContentLoaded", function () {
 
     typeBootText();
 });
+
+// Function to trigger random flickering effect
+function startFlickerEffect() {
+    const terminal = document.getElementById("terminal");
+    
+    setInterval(() => {
+        if (Math.random() > 0.7) {  // 30% chance per interval
+            terminal.classList.add("flicker");
+            setTimeout(() => {
+                terminal.classList.remove("flicker");
+            }, 200); // Flicker duration
+        }
+    }, 1000); // Every second
+}
+
+// Function to trigger random glitch effect on output text
+function glitchTextEffect() {
+    const output = document.getElementById("output");
+    
+    setInterval(() => {
+        if (Math.random() > 0.8) { // 20% chance per interval
+            output.classList.add("glitch");
+            setTimeout(() => {
+                output.classList.remove("glitch");
+            }, 100); // Glitch duration
+        }
+    }, 1500); // Every 1.5 seconds
+}
+
+// Apply scanline shift effect to overlay
+function applyScanlineShift() {
+    const scanlineOverlay = document.getElementById("scanlineOverlay");
+    scanlineOverlay.classList.add("scanline-overlay");
+}
+
+// Start effects on page load
+document.addEventListener("DOMContentLoaded", () => {
+    startFlickerEffect();
+    glitchTextEffect();
+    applyScanlineShift();
+});
