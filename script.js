@@ -26,24 +26,31 @@ const hackingMessages = [
 
 // Simulated file system
 const fileSystem = {
-    "/": ["about.txt", "projects/", "contact.txt", "skills.txt", "resume.pdf"],
-    "/projects": ["smart-home.txt", "ai-bot.txt", "web-dashboard.txt"]
+    "/": ["about.txt", "contact.txt", "skills.txt", "resume.pdf", "projects/", "easter-eggs/"],
+    "/projects": ["smart-home.txt", "ai-bot.txt", "web-dashboard.txt"],
+    "/easter-eggs": ["sandwich.txt", "joke.txt", "hack.txt", "matrix.txt"]
 };
 
 // Command responses
 const commands = {
-    "help": "Available commands:\n- ls\n- cat [file]\n- cd [folder]\n- clear\n- joke\n- resume\n- hack\n- matrix",
+    "help": "Available commands:\n- ls\n- cat [file]\n- cd [folder]\n- clear\n",
+    "clear": () => (output.innerHTML = ""),
     "cat /about.txt": "Hi, I'm [Your Name], a developer passionate about robotics, Arduino, and web development!",
     "cat /skills.txt": "Skills:\n- Web Dev: JavaScript, React, Node.js\n- Hardware: Arduino, Raspberry Pi\n- OS: Linux, Unix",
     "cat /contact.txt": "📧 Email: you@example.com\n🐙 GitHub: github.com/yourprofile\n🔗 LinkedIn: linkedin.com/in/yourname\n🐦 Twitter: twitter.com/yourhandle",
     "cat /projects/smart-home.txt": "Smart Home Automation\n- Arduino-based IoT system\nGitHub: github.com/yourproject",
     "cat /projects/ai-bot.txt": "AI Chatbot\n- NLP chatbot using TensorFlow\nGitHub: github.com/yourproject",
     "cat /projects/web-dashboard.txt": "Web Dashboard\n- Real-time IoT monitoring dashboard\nGitHub: github.com/yourproject",
-    "clear": () => (output.innerHTML = ""),
-    "joke": () => (output.innerHTML += `😂 ${jokes[Math.floor(Math.random() * jokes.length)]}<br>`),
-    "resume": () => (window.location.href = "resume.pdf"),
-    "hack": startFakeHacking,
-    "matrix": startMatrixMode
+    "cat /easter-eggs/sandwich.txt": "Try typing ```sudo make sandwich```\nSecret Tip: If it does not work, try ```sudo make sandwich --force``` instead",
+    "cat /easter-eggs/joke.txt": "Try typing ```sudo joke``` to get a good laugh",
+    "cat /easter-eggs/hack.txt": "Try typing ```sudo hack``` to hack into the FBI",
+    "cat /easter-eggs/matrix.txt": "Try typing ```sudo matrix``` to teleport to the world of Hollywood\nSecret Tip: press esc key to exit",
+    "sudo resume": () => (window.location.href = "resume.pdf"),
+    "sudo joke": () => (output.innerHTML += `😂 ${jokes[Math.floor(Math.random() * jokes.length)]}<br>`),
+    "sudo hack": startFakeHacking,
+    "sudo matrix": startMatrixMode,
+    "sudo make sandwich": "Permission Denied!!",
+    "sudo make sandwich --force": "Here's a 🥪!"
 };
 
 // Handle commands
